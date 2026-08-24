@@ -43,7 +43,7 @@ export default function ProductDetail({ product, onBack, onAddToCart, substitute
 
   const renderProductImage = (url: string | null | undefined) => {
     if (url) {
-      return <img src={url} alt="Product" className="w-full h-full object-cover md:object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500" />;
+      return <img src={url} alt="Product" className="w-full h-full object-cover md:object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500" onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x400/E8F5E9/2E7D32?text=${encodeURIComponent(product?.name?.split(' ')[0] || 'Product')}`; }} />;
     }
     return (
       <div className="w-full h-full bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:scale-105 transition-transform duration-500">
@@ -160,7 +160,7 @@ export default function ProductDetail({ product, onBack, onAddToCart, substitute
                   <div key={sub.id} className="bg-surface-container-lowest border border-surface-variant rounded-xl p-3 flex items-center gap-3 shadow-sm hover:shadow-md transition-shadow">
                     <div className="w-16 h-16 bg-surface-container rounded-lg overflow-hidden shrink-0 flex items-center justify-center">
                       {sub.imageUrl ? (
-                        <img src={sub.imageUrl} alt={sub.name} className="w-full h-full object-cover mix-blend-multiply" />
+                        <img src={sub.imageUrl} alt={sub.name} className="w-full h-full object-cover mix-blend-multiply" onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x400/E8F5E9/2E7D32?text=${encodeURIComponent(sub.name.split(' ')[0])}`; }} />
                       ) : (
                         <Package className="w-6 h-6 opacity-50 text-on-surface-variant" />
                       )}

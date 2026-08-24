@@ -182,7 +182,7 @@ const VoxPanel = forwardRef<VoxPanelRef, VoxPanelProps>(({
                     <div className="vox-glass p-3 rounded-xl flex items-center gap-3 w-full border-l-4 border-l-primary shadow-sm mt-2">
                       <div className="w-12 h-12 rounded-lg bg-surface-container-high overflow-hidden shrink-0">
                         {msg.productCard.image ? (
-                           <img src={msg.productCard.image} alt={msg.productCard.name} className="w-full h-full object-cover" />
+                           <img src={msg.productCard.image} alt={msg.productCard.name} className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x400/E8F5E9/2E7D32?text=${encodeURIComponent(msg.productCard?.name?.split(' ')[0] || 'Product')}`; }} />
                         ) : (
                            <div className="w-full h-full bg-surface-variant flex items-center justify-center text-on-surface-variant">
                              <Package className="w-6 h-6 text-on-surface-variant" />
@@ -203,7 +203,7 @@ const VoxPanel = forwardRef<VoxPanelRef, VoxPanelProps>(({
                         <div key={idx} className="vox-glass p-3 rounded-xl flex flex-col gap-2 min-w-[140px] max-w-[140px] shadow-sm snap-start">
                           <div className="w-full h-[100px] rounded-lg bg-surface-container-high overflow-hidden shrink-0">
                             {card.image ? (
-                               <img src={card.image} alt={card.name} className="w-full h-full object-cover" />
+                               <img src={card.image} alt={card.name} className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x400/E8F5E9/2E7D32?text=${encodeURIComponent(card.name.split(' ')[0])}`; }} />
                             ) : (
                                <div className="w-full h-full bg-surface-variant flex items-center justify-center text-on-surface-variant">
                                  <Package className="w-8 h-8 text-on-surface-variant opacity-50" />

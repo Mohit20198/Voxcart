@@ -1,4 +1,4 @@
-﻿import { db } from '../config/firebase';
+import { db } from '../config/firebase';
 import crypto from 'crypto';
 
 function generateBarcode(name: string): string {
@@ -10,14 +10,14 @@ function generateBarcode(name: string): string {
 // Every product -> specific permanent Unsplash photo URL (no expiring params)
 const PERMANENT_IMAGES: Record<string, string> = {
   // DAIRY
-  'Amul Toned Milk, 500ml':         'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&q=80',
-  'Amul Butter, 100g':              'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400&q=80',
-  'Amul Cheese Slices, 10pc':       'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=400&q=80',
-  'Curd (Dahi), 400g':              'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80',
-  'Paneer, 200g':                   'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400&q=80',
-  'Amul Ghee, 500ml':               'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80',
-  'Mother Dairy Lassi, 200ml':      'https://images.unsplash.com/photo-1553361371-9b09c5b24e91?w=400&q=80',
-  'Amul Mozzarella Cheese, 200g':   'https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3?w=400&q=80',
+  'Amul Toned Milk, 500ml':         'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80', // milk bottle/glass
+  'Amul Butter, 100g':              'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400&q=80', // butter
+  'Amul Cheese Slices, 10pc':       'https://images.unsplash.com/photo-1628185078567-c25e8ddde6b5?w=400&q=80', // sliced cheese
+  'Curd (Dahi), 400g':              'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80', // yogurt
+  'Paneer, 200g':                   'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400&q=80', // paneer
+  'Amul Ghee, 500ml':               'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80', // ghee jar
+  'Mother Dairy Lassi, 200ml':      'https://images.unsplash.com/photo-1553361371-9b09c5b24e91?w=400&q=80', // lassi
+  'Amul Mozzarella Cheese, 200g':   'https://images.unsplash.com/photo-1618841557871-b4664fbf0cb3?w=400&q=80', // mozzarella
 
   // PRODUCE
   'Onion, 1kg':                     'https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=400&q=80',
@@ -44,15 +44,15 @@ const PERMANENT_IMAGES: Record<string, string> = {
   'Rusk, 200g':                     'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=80',
 
   // SNACKS
-  'Parle-G Biscuits, 250g':         'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=80',
-  "Lay's Chips, 52g":               'https://images.unsplash.com/photo-1566478989014-d1a21eb7af57?w=400&q=80',
-  'Kurkure, 90g':                   'https://images.unsplash.com/photo-1599599810694-b5b37304c041?w=400&q=80',
-  "Haldiram's Bhujia, 200g":        'https://images.unsplash.com/photo-1599061767264-4ed87d536c5e?w=400&q=80',
-  'Britannia Good Day Cookies, 150g':'https://images.unsplash.com/photo-1499636027994-c44e0e7b47d4?w=400&q=80',
-  "Haldiram's Aloo Bhujia, 150g":   'https://images.unsplash.com/photo-1599061767264-4ed87d536c5e?w=400&q=80',
-  'Maggi Noodles, 280g (4pc)':      'https://images.unsplash.com/photo-1569718040-5a5e4de9e6e9?w=400&q=80',
-  'Top Ramen Masala, 240g (4pc)':   'https://images.unsplash.com/photo-1569718040-5a5e4de9e6e9?w=400&q=80',
-  'Chips Ahoy Cookies, 100g':       'https://images.unsplash.com/photo-1499636027994-c44e0e7b47d4?w=400&q=80',
+  'Parle-G Biscuits, 250g':         'https://images.unsplash.com/photo-1499636027994-c44e0e7b47d4?w=400&q=80', // cookies
+  "Lay's Chips, 52g":               'https://images.unsplash.com/photo-1566478989014-d1a21eb7af57?w=400&q=80', // potato chips
+  'Kurkure, 90g':                   'https://images.unsplash.com/photo-1599599810694-b5b37304c041?w=400&q=80', // orange puffs
+  "Haldiram's Bhujia, 200g":        'https://images.unsplash.com/photo-1604085444641-38435d680bc9?w=400&q=80', // sev
+  'Britannia Good Day Cookies, 150g':'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=400&q=80', // butter cookies
+  "Haldiram's Aloo Bhujia, 150g":   'https://images.unsplash.com/photo-1604085444641-38435d680bc9?w=400&q=80', // sev
+  'Maggi Noodles, 280g (4pc)':      'https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?w=400&q=80', // noodles
+  'Top Ramen Masala, 240g (4pc)':   'https://images.unsplash.com/photo-1569718040-5a5e4de9e6e9?w=400&q=80', // noodles block
+  'Chips Ahoy Cookies, 100g':       'https://images.unsplash.com/photo-1499636027994-c44e0e7b47d4?w=400&q=80', // chocolate chip
 
   // BEVERAGES
   'Tata Tea Gold, 250g':            'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80',
@@ -80,16 +80,16 @@ const PERMANENT_IMAGES: Record<string, string> = {
   'Frozen Paratha, 5pc':            'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80',
 
   // GRAINS & PULSES
-  'Tata Sampann Toor Dal, 1kg':     'https://images.unsplash.com/photo-1585996058529-e94f07e1b2c4?w=400&q=80',
-  'India Gate Basmati Rice, 1kg':   'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=80',
-  'Aashirvaad Atta, 5kg':           'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&q=80',
-  'Moong Dal, 500g':                'https://images.unsplash.com/photo-1585996058529-e94f07e1b2c4?w=400&q=80',
-  'Rajma (Kidney Beans), 500g':     'https://images.unsplash.com/photo-1548350695-f13a8e7ede6a?w=400&q=80',
-  'Chana Dal, 500g':                'https://images.unsplash.com/photo-1585996058529-e94f07e1b2c4?w=400&q=80',
-  'Poha (Flattened Rice), 500g':    'https://images.unsplash.com/photo-1605197161470-5d6b17d3b243?w=400&q=80',
-  'Sooji (Semolina), 500g':         'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&q=80',
-  'Besan (Gram Flour), 500g':       'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&q=80',
-  'Oats, 500g':                     'https://images.unsplash.com/photo-1614961233913-a5113a4a34ed?w=400&q=80',
+  'Tata Sampann Toor Dal, 1kg':     'https://images.unsplash.com/photo-1585996058529-e94f07e1b2c4?w=400&q=80', // yellow lentils
+  'India Gate Basmati Rice, 1kg':   'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=80', // white rice
+  'Aashirvaad Atta, 5kg':           'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&q=80', // flour
+  'Moong Dal, 500g':                'https://images.unsplash.com/photo-1585996058529-e94f07e1b2c4?w=400&q=80', // moong dal
+  'Rajma (Kidney Beans), 500g':     'https://images.unsplash.com/photo-1548350695-f13a8e7ede6a?w=400&q=80', // rajma
+  'Chana Dal, 500g':                'https://images.unsplash.com/photo-1585996058529-e94f07e1b2c4?w=400&q=80', // chana dal
+  'Poha (Flattened Rice), 500g':    'https://images.unsplash.com/photo-1605197161470-5d6b17d3b243?w=400&q=80', // poha
+  'Sooji (Semolina), 500g':         'https://images.unsplash.com/photo-1627572719622-4892c286b1f2?w=400&q=80', // semolina powder (not seeds)
+  'Besan (Gram Flour), 500g':       'https://images.unsplash.com/photo-1627572719622-4892c286b1f2?w=400&q=80', // yellow powder
+  'Oats, 500g':                     'https://images.unsplash.com/photo-1614961233913-a5113a4a34ed?w=400&q=80', // oats
 
   // CONDIMENTS & SPICES
   'Kissan Tomato Ketchup, 500g':    'https://images.unsplash.com/photo-1627308595171-d1b5d67129c4?w=400&q=80',

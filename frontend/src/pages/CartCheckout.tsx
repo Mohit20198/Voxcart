@@ -60,7 +60,7 @@ export default function CartCheckout({ cartItems, onUpdateQuantity, onRemove, on
 
   const renderProductImage = (url: string | null | undefined, name: string) => {
     if (url) {
-      return <img src={url} alt={name} className="w-full h-full object-cover" />;
+      return <img src={url} alt={name} className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x400/E8F5E9/2E7D32?text=${encodeURIComponent(name.split(' ')[0])}`; }} />;
     }
     return (
       <div className="w-full h-full bg-surface-variant flex items-center justify-center text-on-surface-variant">

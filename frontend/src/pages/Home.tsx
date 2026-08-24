@@ -70,7 +70,7 @@ export default function Home({ listItems, onUpdateQuantity, onRemove, onGoToMark
   }, {});
 
   const renderProductImage = (url: string) => {
-    if (url) return <img src={url} alt="Product" className="w-full h-full object-cover" />;
+    if (url) return <img src={url} alt="Product" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x400/E8F5E9/2E7D32?text=${encodeURIComponent(item?.name?.split(' ')[0] || 'Product')}`; }} />;
     return (
       <div className="w-full h-full bg-surface-container flex items-center justify-center text-on-surface-variant">
         <Package className="w-6 h-6 opacity-50" />
@@ -172,7 +172,7 @@ export default function Home({ listItems, onUpdateQuantity, onRemove, onGoToMark
             <div className="absolute top-0 right-0 bg-tertiary text-on-tertiary font-label-bold text-[10px] px-2 py-0.5 rounded-bl-lg z-10">Seasonal</div>
             <div className="aspect-[4/3] bg-surface-variant rounded-lg mb-2 overflow-hidden flex-shrink-0">
               {item.imageUrl
-                ? <img alt={item.itemName} className="w-full h-full object-cover mix-blend-multiply" src={item.imageUrl} />
+                ? <img alt={item.itemName} className="w-full h-full object-cover mix-blend-multiply" src={item.imageUrl} onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x400/E8F5E9/2E7D32?text=${encodeURIComponent(item.itemName.split(' ')[0])}`; }} />
                 : <div className="w-full h-full flex items-center justify-center"><Package className="w-6 h-6 opacity-50 text-outline" /></div>
               }
             </div>
@@ -245,7 +245,7 @@ export default function Home({ listItems, onUpdateQuantity, onRemove, onGoToMark
                 {popularItems.map(item => (
                   <div key={item.id} className="w-[140px] flex-shrink-0 bg-surface-container-lowest border border-outline-variant rounded-xl p-3 hover:bg-surface-container-low transition-colors cursor-pointer group flex flex-col" onClick={() => onAdd?.(item)}>
                     <div className="aspect-[4/3] bg-surface-variant rounded-lg mb-2 overflow-hidden flex-shrink-0">
-                      <img alt={item.name} className="w-full h-full object-cover mix-blend-multiply" src={item.imageUrl} />
+                      <img alt={item.name} className="w-full h-full object-cover mix-blend-multiply" src={item.imageUrl} onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x400/E8F5E9/2E7D32?text=${encodeURIComponent(item.name.split(' ')[0])}`; }} />
                     </div>
                     <div className="flex-1 flex flex-col justify-between">
                       <p className="font-body-sm text-body-sm text-on-surface truncate mb-1" title={item.name}>{item.name}</p>
@@ -407,7 +407,7 @@ export default function Home({ listItems, onUpdateQuantity, onRemove, onGoToMark
                       <div key={item.itemName} className="flex items-center gap-3 bg-surface rounded-lg p-2 shadow-sm border border-surface-variant group">
                         <div className="w-12 h-12 rounded bg-surface-container flex items-center justify-center shrink-0 overflow-hidden">
                           {item.imageUrl
-                            ? <img src={item.imageUrl} alt={item.itemName} className="w-full h-full object-cover mix-blend-multiply" />
+                            ? <img src={item.imageUrl} alt={item.itemName} className="w-full h-full object-cover mix-blend-multiply" onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x400/E8F5E9/2E7D32?text=${encodeURIComponent(item.itemName.split(' ')[0])}`; }} />
                             : <Package className="w-6 h-6 opacity-50" />
                           }
                         </div>
