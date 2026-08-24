@@ -115,4 +115,4 @@ flowchart TD
    npx tsx src/scripts/seedProducts.ts
    ```
 
-The application will be running at `http://localhost:5173`.
+The application will be running at `https://voxcart-sh9p.vercel.app/`.
