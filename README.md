@@ -17,6 +17,42 @@ For voice comprehension, transcripts from the Web Speech API are routed through 
 
 To ensure the app feels grounded and snappy, latency-sensitive features bypass the LLM. For example, product search uses debounced Firestore queries, and alternative product substitutes are mapped using a pre-calculated dataset and local ML embeddings (`@xenova/transformers`). By decoupling the conversational AI from the strict inventory database, VoxCart achieves a highly robust, voice-first UX complete with live visual feedback, multi-language support, and smart history-based recommendations.
 
+### System Architecture
+
+```mermaid
+flowchart TD
+    subgraph Client["🌐 Frontend (React / Vite / Tailwind)"]
+        A[User Speech] -->|Web Speech API| B[Transcript]
+        B --> C[VoxPanel UI]
+        C -->|POST /voice/command| D{API Layer}
+        E[Product Search] -->|Debounced Query| D
+        F[Browse / Cart / Profile Pages]
+    end
+
+    subgraph Backend["⚙️ Backend (Node.js / Express / TypeScript)"]
+        D --> G[Voice Route]
+        G --> H{Agent Loop\nDeepSeek LLM via OpenRouter}
+        H -->|Tool Call: add_item| I[listService]
+        H -->|Tool Call: search_products| J[productCache]
+        H -->|Tool Call: find_substitutes| K[substitutes map]
+        H -->|Tool Call: get_recommendations| L[recommendationEngine]
+        H -->|Tool Call: list_cart_items| I
+        J -->|Semantic Match| M[ML Service\nTransformers.js Embeddings]
+    end
+
+    subgraph DB["🔥 Firebase Firestore"]
+        N[(products collection)]
+        O[(lists collection)]
+    end
+
+    I <-->|read / write| O
+    J <-->|read| N
+    L <-->|read history| O
+
+    H -->|Structured Reply + Actions| C
+    C -->|Real-time Updates| F
+```
+
 ---
 
 ## Technical Stack
