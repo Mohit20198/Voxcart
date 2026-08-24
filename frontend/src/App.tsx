@@ -133,6 +133,23 @@ export default function App() {
       if (data.handledBy === 'fastpath') {
         actions = [{ tool: data.action, result: data.item }];
         fetchList();
+
+        // Generate natural conversational reply + follow-up suggestions for fastpath
+        const name = data.item?.itemName || 'that item';
+        if (data.action === 'add') {
+          voxText = `Added **${name}** to your cart! 🛒 Anything else you need?`;
+          quickReplies = ['Check out the cart', `Remove ${name}`, 'Show my list', 'Add more items'];
+          productCard = data.item?.imageUrl ? { name: data.item.itemName, price: data.item.price ?? 0, image: data.item.imageUrl } : null;
+        } else if (data.action === 'remove') {
+          voxText = `Removed **${name}** from your cart.`;
+          quickReplies = ['Show my list', 'Undo', 'Add something else'];
+        } else if (data.action === 'modify') {
+          voxText = `Updated **${name}** to ${data.item?.quantity} in your cart.`;
+          quickReplies = ['Show my list', 'Check out the cart'];
+        } else if (data.error) {
+          voxText = `I couldn't find **${name}** in your list. Want me to add it instead?`;
+          quickReplies = [`Add ${name}`, 'Show my list'];
+        }
       } else {
         if (data.needsClarification && data.actionsPerformed) {
           const substituteAction = data.actionsPerformed.find((a: any) => a.tool === 'find_substitutes');
