@@ -12,7 +12,7 @@ const PERMANENT_IMAGES: Record<string, string> = {
   // DAIRY
   'Amul Toned Milk, 500ml':         'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80', // milk bottle/glass
   'Amul Butter, 100g':              'https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400&q=80', // butter
-  'Amul Cheese Slices, 10pc':       'https://images.unsplash.com/photo-1628185078567-c25e8ddde6b5?w=400&q=80', // sliced cheese
+  'Amul Cheese Slices, 10pc':       'https://images.unsplash.com/photo-1486297678162-eb2a19b0a318?w=400&q=80', // sliced cheese
   'Curd (Dahi), 400g':              'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&q=80', // yogurt
   'Paneer, 200g':                   'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400&q=80', // paneer
   'Amul Ghee, 500ml':               'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80', // ghee jar
@@ -26,15 +26,15 @@ const PERMANENT_IMAGES: Record<string, string> = {
   'Banana, 1 dozen':                'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&q=80',
   'Spinach (Palak), bunch':         'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&q=80',
   'Apple, 1kg':                     'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&q=80',
-  'Coriander leaves, bunch':        'https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?w=400&q=80',
+  'Coriander leaves, bunch':        'https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=400&q=80',
   'Green Chilli, 100g':             'https://images.unsplash.com/photo-1526346698789-22fd84314424?w=400&q=80',
   'Garlic, 100g':                   'https://images.unsplash.com/photo-1540148426945-6cf22a6b2383?w=400&q=80',
-  'Ginger, 100g':                   'https://images.unsplash.com/photo-1573551089778-46a7abc39d9f?w=400&q=80',
+  'Ginger, 100g':                   'https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=400&q=80',
   'Capsicum, 250g':                 'https://images.unsplash.com/photo-1563246788-5b5bb1477e9e?w=400&q=80',
   'Lemon, 6pc':                     'https://images.unsplash.com/photo-1587486913049-53fc88980cfc?w=400&q=80',
   'Mango (Alphonso), 1kg':          'https://images.unsplash.com/photo-1553279768-865429fa0078?w=400&q=80',
   'Cucumber, 500g':                 'https://images.unsplash.com/photo-1568584711271-6c929fb49b60?w=400&q=80',
-  'Carrot, 500g':                   'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=80',
+  'Carrot, 500g':                   'https://images.unsplash.com/photo-1447175008436-054170c2e979?w=400&q=80',
   'Cauliflower, 1pc':               'https://images.unsplash.com/photo-1568584711075-5d326e41b91c?w=400&q=80',
 
   // BAKERY
@@ -69,13 +69,13 @@ const PERMANENT_IMAGES: Record<string, string> = {
   'Chicken Breast, 500g':           'https://images.unsplash.com/photo-1604503468163-852b93c26b26?w=400&q=80',
   'Chicken Curry Cut, 1kg':         'https://images.unsplash.com/photo-1599942774949-6c8e01f01e7c?w=400&q=80',
   'Eggs, 12pc tray':                'https://images.unsplash.com/photo-1569288052389-7db59cfd16ee?w=400&q=80',
-  'Rohu Fish, 500g':                'https://images.unsplash.com/photo-1518789831826-84e81e0e5e5e?w=400&q=80',
+  'Rohu Fish, 500g':                'https://images.unsplash.com/photo-1534482421-64566f976cfa?w=400&q=80',
   'Mutton, 500g':                   'https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400&q=80',
   'Prawn, 250g':                    'https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&q=80',
 
   // FROZEN
   'McCain Frozen Fries, 425g':      'https://images.unsplash.com/photo-1576107232684-1279f390859f?w=400&q=80',
-  'Frozen Peas, 500g':              'https://images.unsplash.com/photo-1518977822534-7049a61ee0c2?w=400&q=80',
+  'Frozen Peas, 500g':              'https://images.unsplash.com/photo-1501300140941-6c556d26c1b9?w=400&q=80',
   'Amul Ice Cream, 500ml':          'https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400&q=80',
   'Frozen Paratha, 5pc':            'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80',
 
