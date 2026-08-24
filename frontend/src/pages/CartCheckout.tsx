@@ -28,8 +28,8 @@ export default function CartCheckout({ cartItems, onUpdateQuantity, onRemove, on
   // Group items by category
   const groupedItems = useMemo(() => {
     return cartItems.reduce((acc, item) => {
-      let cat = item.category || 'Uncategorized';
-      if (cat.toLowerCase() === 'other') cat = 'Uncategorized';
+      let cat = item.category || 'General';
+      if (cat.toLowerCase() === 'other') cat = 'General';
       
       const displayCat = cat.charAt(0).toUpperCase() + cat.slice(1);
       if (!acc[displayCat]) acc[displayCat] = [];

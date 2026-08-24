@@ -36,7 +36,7 @@ export const addListItem = async (item: Omit<ShoppingListItem, 'id' | 'status' |
 
   const newItem: any = {
     ...item,
-    category: item.category || 'Uncategorized', // Default for now if not provided
+    category: item.category || 'General', // Default for now if not provided
     price,
     imageUrl,
     status: 'active',
