@@ -1,11 +1,11 @@
 # VoxCart: Voice Command Shopping Assistant
 
 VoxCart is a modern, voice-first shopping list manager and smart grocery assistant. It allows users to manage their shopping list, discover products, and receive smart recommendations entirely through natural voice commands.
-| Main Dashboard | Voice Command Interaction |
+| | |
 | :---: | :---: |
 | <img src="https://github.com/user-attachments/assets/088b0200-f469-407f-acfe-2a113999b63e" width="450"> | <img src="https://github.com/user-attachments/assets/f30eb7c4-b5d5-4f38-a883-fde036abe395" width="450"> |
 
-| Search Interface | Cart Management | Mobile UI |
+| | | |
 | :---: | :---: | :---: |
 | <img src="https://github.com/user-attachments/assets/3c4df189-145c-40a2-af37-b5da12dcdcb7" width="280"> | <img src="https://github.com/user-attachments/assets/45ce05d7-f227-4c82-aaf0-616194122ac4" width="280"> | <img src="https://github.com/user-attachments/assets/7a7fcc8d-783d-4807-b1a5-0ddac7463d7b" width="280"> |
 
