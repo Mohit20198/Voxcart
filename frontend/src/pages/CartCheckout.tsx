@@ -104,7 +104,7 @@ export default function CartCheckout({ cartItems, onUpdateQuantity, onRemove, on
           </button>
           <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
             <div>
-              <h1 className="font-display text-4xl font-bold text-on-background mb-1">Your Cart</h1>
+              <h1 className="font-display text-2xl md:text-4xl font-bold text-on-background mb-1">Your Cart</h1>
               <p className="font-body-lg text-on-surface-variant">{cartItems.length} items</p>
             </div>
             <div className="hidden md:flex glass-panel px-4 py-2 rounded-full items-center gap-2 text-primary-container text-sm font-medium animate-pulse border-primary-container/30">
@@ -193,7 +193,7 @@ export default function CartCheckout({ cartItems, onUpdateQuantity, onRemove, on
           </div>
 
           {/* Right Column: Order Summary */}
-          <div className="lg:col-span-4 w-full z-40 bg-surface md:bg-transparent border-t border-outline-variant/30 md:border-none p-4 md:p-0 mt-8 md:mt-0 pb-[88px] md:pb-0">
+          <div className="lg:col-span-4 w-full z-40 bg-surface md:bg-transparent border-t border-outline-variant/30 md:border-none p-4 md:p-0 mt-4 md:mt-0 pb-[100px] md:pb-0">
             <div className="md:glass-panel md:rounded-xl md:p-6 md:sticky md:top-24 md:shadow-md">
               <h2 className="hidden md:block font-headline-md text-headline-md text-on-background mb-6 border-b border-outline-variant/30 pb-4">Order Summary</h2>
               
@@ -248,6 +248,33 @@ export default function CartCheckout({ cartItems, onUpdateQuantity, onRemove, on
           </div>
         </div>
       </div>
+
+      {/* Sticky Mobile Place Order Bar */}
+      {cartItems.length > 0 && (
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-outline-variant/30 px-4 py-3 flex items-center justify-between shadow-lg">
+          <div>
+            <p className="text-xs text-on-surface-variant font-medium uppercase tracking-wide">Total</p>
+            <p className="text-lg font-bold text-on-surface">{formatPrice(total)}</p>
+          </div>
+          <button
+            onClick={handlePlaceOrder}
+            disabled={isPlacingOrder || orderSuccess}
+            className={`px-6 py-3 rounded-xl font-headline-sm flex items-center gap-2 transition-all ${
+              orderSuccess ? 'bg-primary text-on-primary' :
+              isPlacingOrder ? 'bg-surface-variant text-on-surface-variant' :
+              'bg-primary-container text-white shadow-sm active:scale-95'
+            }`}
+          >
+            {isPlacingOrder ? (
+              <><span className="material-symbols-outlined animate-spin text-sm">progress_activity</span> Processing...</>
+            ) : orderSuccess ? (
+              <><span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span> Done!</>
+            ) : (
+              <><span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span> Place Order</>
+            )}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

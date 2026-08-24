@@ -545,7 +545,7 @@ export default function App() {
         onQuickReply={(text) => handleVoxCommand(text)}
       />
 
-      <div className="fixed bottom-8 right-8 z-40 flex items-center group">
+      <div className="fixed bottom-24 right-4 md:bottom-8 md:right-8 z-40 flex items-center group">
         {/* Hover Tooltip (Desktop Only) */}
         <div className="hidden md:flex absolute right-[calc(100%+16px)] bg-inverse-surface text-inverse-on-surface text-sm font-label-bold px-3 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-150 whitespace-nowrap pointer-events-none items-center">
           How can I help you?

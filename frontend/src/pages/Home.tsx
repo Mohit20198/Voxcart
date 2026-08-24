@@ -190,7 +190,8 @@ export default function Home({ listItems, onUpdateQuantity, onRemove, onGoToMark
   );
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-4 md:px-8 pt-6 pb-12 flex flex-col gap-8">
+    <>
+    <div className="w-full max-w-7xl mx-auto px-4 md:px-8 pt-6 pb-24 md:pb-12 flex flex-col gap-8">
 
       {listItems.length === 0 ? (
         <>
@@ -264,11 +265,11 @@ export default function Home({ listItems, onUpdateQuantity, onRemove, onGoToMark
         <>
           {/* ── Hero Banner ── */}
           <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-surface-container-low to-surface-container-high border border-surface-variant" style={{ minHeight: 200 }}>
-            <div className="p-8 md:p-10 max-w-lg relative z-10">
-              <h1 className="font-display-lg text-display-lg text-on-background leading-tight mb-3">
+            <div className="p-4 sm:p-6 md:p-10 max-w-lg relative z-10">
+              <h1 className="font-display-lg text-[1.6rem] sm:text-[2rem] md:text-display-lg text-on-background leading-tight mb-3">
                 <span className="text-primary">Shop by voice.</span><br />Fast &amp; Simple.
               </h1>
-              <p className="font-body-lg text-body-lg text-on-surface-variant mb-5 max-w-xs">
+              <p className="font-body-lg text-sm md:text-body-lg text-on-surface-variant mb-4 md:mb-5 max-w-xs">
                 Simply speak your list, and VoxCart curates the freshest items directly to your door.
               </p>
               <button onClick={onGoToMarketplace} className="flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-full font-label-bold text-label-bold hover:scale-105 hover:shadow-lg active:scale-95 transition-all shadow-md">
@@ -437,5 +438,23 @@ export default function Home({ listItems, onUpdateQuantity, onRemove, onGoToMark
         </>
       )}
     </div>
+
+      {/* Sticky Mobile Checkout Bar */}
+      {listItems.length > 0 && (
+        <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-outline-variant/30 px-4 py-3 flex items-center justify-between shadow-lg">
+          <div>
+            <p className="font-label-bold text-label-bold text-on-surface-variant text-xs uppercase tracking-wide">Estimated Total</p>
+            <p className="font-price-lg text-lg text-primary font-bold">{formatPrice(totalPrice)}</p>
+          </div>
+          <button
+            onClick={onGoToCart}
+            className="bg-primary text-on-primary font-label-bold px-6 py-3 rounded-xl shadow-md active:scale-95 transition-transform flex items-center gap-2"
+          >
+            <ShoppingCart className="w-4 h-4" />
+            Checkout
+          </button>
+        </div>
+      )}
+    </>
   );
 }

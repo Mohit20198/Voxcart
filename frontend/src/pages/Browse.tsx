@@ -106,7 +106,7 @@ export default function Browse({ categories, activeCategory, onSetCategory, onAd
       {/* ══════════════════════════════════════════════════
           MOBILE HEADER & FILTER BAR (Sticky)
       ══════════════════════════════════════════════════ */}
-      <div className="md:hidden sticky top-0 z-30 bg-surface/90 backdrop-blur-sm pt-2 pb-4 px-container-margin border-b border-surface-variant mb-4 -mx-container-margin px-container-margin">
+      <div className="md:hidden sticky top-14 z-30 bg-surface/95 backdrop-blur-sm pt-2 pb-4 px-container-margin border-b border-surface-variant mb-4 -mx-container-margin px-container-margin">
         <div className="flex justify-between items-center mb-4 pt-2">
           <h1 className="font-display text-display text-primary tracking-tight">Marketplace</h1>
         </div>

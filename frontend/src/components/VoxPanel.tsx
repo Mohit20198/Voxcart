@@ -93,7 +93,7 @@ const VoxPanel = forwardRef<VoxPanelRef, VoxPanelProps>(({
       <div className={`fixed z-[70] vox-glass flex flex-col overflow-hidden shadow-2xl pointer-events-auto slide-up transition-all duration-300 ease-in-out ${
         isFullscreen
           ? 'inset-0 rounded-none'
-          : 'bottom-0 left-0 w-full md:bottom-[84px] md:right-6 md:left-auto md:w-[420px] md:rounded-[32px] h-[75vh] md:h-[calc(100vh-100px)] md:max-h-[751px] rounded-t-[32px]'
+          : 'bottom-0 left-0 w-full md:bottom-[84px] md:right-6 md:left-auto md:w-[420px] md:rounded-[32px] h-[80vh] md:h-[calc(100vh-100px)] md:max-h-[751px] rounded-t-[32px] pb-safe'
       }`}>
         
         {/* Handle — hidden in fullscreen */}
@@ -123,7 +123,7 @@ const VoxPanel = forwardRef<VoxPanelRef, VoxPanelProps>(({
                 {isFullscreen ? 'close_fullscreen' : 'open_in_full'}
               </span>
             </button>
-            <button onClick={onClose} className="p-2 -mr-2 text-on-surface-variant hover:bg-surface-container-highest rounded-full transition-colors">
+            <button onClick={onClose} className="p-3 -mr-2 text-on-surface-variant hover:bg-surface-container-highest rounded-full transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center">
               <X className="w-5 h-5" />
             </button>
           </div>
