@@ -5,6 +5,8 @@ VoxCart is a modern, voice-first shopping list manager and smart grocery assista
 <img width="1892" height="862" alt="image" src="https://github.com/user-attachments/assets/f30eb7c4-b5d5-4f38-a883-fde036abe395" />
 <img width="1905" height="867" alt="image" src="https://github.com/user-attachments/assets/3c4df189-145c-40a2-af37-b5da12dcdcb7" />
 <img width="1917" height="871" alt="image" src="https://github.com/user-attachments/assets/45ce05d7-f227-4c82-aaf0-616194122ac4" />
+<img width="1901" height="867" alt="image" src="https://github.com/user-attachments/assets/7a7fcc8d-783d-4807-b1a5-0ddac7463d7b" />
+
 
 
 
