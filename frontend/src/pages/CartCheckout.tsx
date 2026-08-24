@@ -28,8 +28,12 @@ export default function CartCheckout({ cartItems, onUpdateQuantity, onRemove, on
   // Group items by category
   const groupedItems = useMemo(() => {
     return cartItems.reduce((acc, item) => {
-      if (!acc[item.category]) acc[item.category] = [];
-      acc[item.category].push(item);
+      let cat = item.category || 'Uncategorized';
+      if (cat.toLowerCase() === 'other') cat = 'Uncategorized';
+      
+      const displayCat = cat.charAt(0).toUpperCase() + cat.slice(1);
+      if (!acc[displayCat]) acc[displayCat] = [];
+      acc[displayCat].push(item);
       return acc;
     }, {} as Record<string, CartItem[]>);
   }, [cartItems]);
@@ -188,8 +192,8 @@ export default function CartCheckout({ cartItems, onUpdateQuantity, onRemove, on
             )}
           </div>
 
-          {/* Right Column: Order Summary (Sticky Desktop, Fixed Bottom Mobile) */}
-          <div className="lg:col-span-4 fixed bottom-0 left-0 right-0 md:relative md:bottom-auto md:left-auto md:right-auto z-40 bg-surface md:bg-transparent border-t border-outline-variant/30 md:border-none p-4 md:p-0 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] md:shadow-none pb-[88px] md:pb-0">
+          {/* Right Column: Order Summary */}
+          <div className="lg:col-span-4 w-full z-40 bg-surface md:bg-transparent border-t border-outline-variant/30 md:border-none p-4 md:p-0 mt-8 md:mt-0 pb-[88px] md:pb-0">
             <div className="md:glass-panel md:rounded-xl md:p-6 md:sticky md:top-24 md:shadow-md">
               <h2 className="hidden md:block font-headline-md text-headline-md text-on-background mb-6 border-b border-outline-variant/30 pb-4">Order Summary</h2>
               
