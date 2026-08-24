@@ -132,7 +132,7 @@ export default function CartCheckout({ cartItems, onUpdateQuantity, onRemove, on
                       </div>
                       <div className="flex-grow">
                         <div className="flex justify-between items-start mb-1">
-                          <h4 className="font-body-sm md:font-body-lg text-on-background font-semibold">{item.name}</h4>
+                          <h4 className="font-body-sm md:font-body-lg text-on-background font-semibold">{item.name || (item as any).itemName}</h4>
                           <button 
                             onClick={() => onRemove(item.id)}
                             aria-label="Remove item" 

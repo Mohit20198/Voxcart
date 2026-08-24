@@ -213,10 +213,10 @@ export default function App() {
     }
   }, [state, transcript, isProcessingVox, resetState]);
 
-  const handleAddToList = async (name: string, quantity: number = 1, unit: string = '') => {
+  const handleAddToList = async (name: string, quantity: number = 1, unit: string = '', category?: string, price?: number, imageUrl?: string) => {
     if (!userId) return;
     try {
-      const newItem = await apiClient.addListItem(userId, name, quantity, unit);
+      const newItem = await apiClient.addListItem(userId, name, quantity, unit, category, price, imageUrl);
       setListItems(prev => {
         // If it already exists, replace it, else append
         const exists = prev.find(i => i.id === newItem.id);
@@ -443,14 +443,14 @@ export default function App() {
               if (text === '') setIsVoxOpen(true);
               else handleVoxCommand(text);
             }}
-            onAdd={(product) => handleAddToList(product.name, 1, '')}
+            onAdd={(product) => handleAddToList(product.name, 1, '', (product as any).category, (product as any).price, (product as any).imageUrl || (product as any).image)}
           />
         ) : activeTab === 'browse' ? (
           <Browse
             categories={REAL_CATEGORIES}
             activeCategory={activeCategory}
             onSetCategory={cat => setActiveCategory(cat)}
-            onAdd={product => handleAddToList(product.name, 1, '')}
+            onAdd={product => handleAddToList(product.name, 1, '', (product as any).category, (product as any).price, (product as any).imageUrl || (product as any).image)}
             cartItems={listItems}
           />
         ) : activeTab === 'cart' ? (

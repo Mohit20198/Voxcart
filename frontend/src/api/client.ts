@@ -32,11 +32,11 @@ export const apiClient = {
     return data.items || [];
   },
 
-  async addListItem(userId: string, itemName: string, quantity: number, unit: string = ''): Promise<BackendListItem> {
+  async addListItem(userId: string, itemName: string, quantity: number, unit: string = '', category?: string, price?: number, imageUrl?: string): Promise<BackendListItem> {
     const res = await fetch(`${API_BASE_URL}/list`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId, itemName, quantity, unit })
+      body: JSON.stringify({ userId, itemName, quantity, unit, category, price, imageUrl })
     });
     if (!res.ok) throw new Error('Failed to add list item');
     const data = await res.json();

@@ -17,7 +17,7 @@ router.get('/:userId', async (req: Request, res: Response, next: NextFunction) =
 // POST /list — add an item directly
 router.post('/', async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { userId, itemName, quantity, unit } = req.body;
+    const { userId, itemName, quantity, unit, category, price, imageUrl } = req.body;
     
     if (!userId || !itemName || quantity === undefined) {
       return res.status(400).json({ error: 'Missing required fields: userId, itemName, quantity' });
@@ -27,7 +27,10 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
       userId: userId as string, 
       itemName: itemName as string, 
       quantity: Number(quantity), 
-      unit: (unit as string) || '' 
+      unit: (unit as string) || '',
+      category: category as string,
+      price: price as number,
+      imageUrl: imageUrl as string
     });
     res.status(201).json({ item });
   } catch (error) {
