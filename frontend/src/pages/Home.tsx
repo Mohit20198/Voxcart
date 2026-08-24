@@ -70,7 +70,7 @@ export default function Home({ listItems, onUpdateQuantity, onRemove, onGoToMark
   }, {});
 
   const renderProductImage = (url: string) => {
-    if (url) return <img src={url} alt="Product" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x400/E8F5E9/2E7D32?text=${encodeURIComponent(item?.name?.split(' ')[0] || 'Product')}`; }} />;
+    if (url) return <img src={url} alt="Product" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).src = `https://placehold.co/400x400/E8F5E9/2E7D32?text=Product`; }} />;
     return (
       <div className="w-full h-full bg-surface-container flex items-center justify-center text-on-surface-variant">
         <Package className="w-6 h-6 opacity-50" />
