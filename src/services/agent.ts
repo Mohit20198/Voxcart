@@ -197,13 +197,32 @@ CRITICAL FORMATTING RULES:
           const args = JSON.parse(toolCall.function.arguments);
           let result: any;
 
+// Strip common conversational suffixes the LLM sometimes appends to item names
+const STRIP_SUFFIXES = [
+  ' in cart', ' to cart', ' to my cart', ' to the cart',
+  ' in list', ' to list', ' to my list', ' to the list',
+  ' in my cart', ' in the cart', ' in my list', ' in the shopping list',
+  ' to shopping list', ' to my shopping list',
+];
+function sanitizeItemName(name: string): string {
+  let cleaned = name.trim().toLowerCase();
+  for (const suffix of STRIP_SUFFIXES) {
+    if (cleaned.endsWith(suffix)) {
+      cleaned = cleaned.slice(0, cleaned.length - suffix.length).trim();
+    }
+  }
+  // Title-case the first letter
+  return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+}
+
           try {
             switch (functionName) {
               case 'add_item': {
-                const cat = categorizeItem(args.itemName);
+                const cleanName = sanitizeItemName(args.itemName);
+                const cat = categorizeItem(cleanName);
                 result = await listService.addListItem({
                   userId,
-                  itemName: args.itemName,
+                  itemName: cleanName,
                   quantity: args.quantity || 1,
                   unit: args.unit || '',
                   category: cat
