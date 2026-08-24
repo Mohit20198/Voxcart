@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { Package } from 'lucide-react';
 import { formatPrice } from '../utils/currency';
 
@@ -18,10 +18,10 @@ interface CartCheckoutProps {
   onRemove: (id: string) => void;
   onPlaceOrder: () => void;
   onBack: () => void;
-  onVoiceCommand: (cmd: string) => void;
+
 }
 
-export default function CartCheckout({ cartItems, onUpdateQuantity, onRemove, onPlaceOrder, onBack, onVoiceCommand }: CartCheckoutProps) {
+export default function CartCheckout({ cartItems, onUpdateQuantity, onRemove, onPlaceOrder, onBack }: CartCheckoutProps) {
   const [isPlacingOrder, setIsPlacingOrder] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
 

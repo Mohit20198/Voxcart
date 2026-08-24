@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Package, Search, SlidersHorizontal, Plus, Heart, ChevronLeft } from 'lucide-react';
+import { Package } from 'lucide-react';
 import { formatPrice } from '../utils/currency';
 
 import { apiClient, type BackendProduct } from '../api/client';
@@ -18,11 +18,11 @@ interface BrowseProps {
   activeCategory: string;
   onSetCategory: (cat: string) => void;
   onAdd: (product: Product) => void;
-  onVoiceCommand: (cmd: string) => void;
+
   cartItems: any[];
 }
 
-export default function Browse({ categories, activeCategory, onSetCategory, onAdd, onVoiceCommand, cartItems }: BrowseProps) {
+export default function Browse({ categories, activeCategory, onSetCategory, onAdd, cartItems }: BrowseProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('Relevance');
   const [priceMin, setPriceMin] = useState('');
@@ -309,7 +309,7 @@ export default function Browse({ categories, activeCategory, onSetCategory, onAd
             )}
             {(priceMin || priceMax) && (
               <div className="flex items-center gap-1 bg-surface-container border border-outline-variant/30 rounded px-2 py-1">
-                <span className="font-body-sm text-body-sm text-on-surface text-[11px]">{formatPrice(priceMin || 0)} - {priceMax ? formatPrice(priceMax) : 'Max'}</span>
+                <span className="font-body-sm text-body-sm text-on-surface text-[11px]">{formatPrice(parseFloat(priceMin) || 0)} - {priceMax ? formatPrice(parseFloat(priceMax)) : 'Max'}</span>
                 <button onClick={() => { setPriceMin(''); setPriceMax(''); }} className="material-symbols-outlined text-on-surface-variant hover:text-error text-[14px] cursor-pointer">close</button>
               </div>
             )}
@@ -354,7 +354,7 @@ export default function Browse({ categories, activeCategory, onSetCategory, onAd
             </div>
           ) : filteredProducts.length > 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-gutter-grid pb-24 md:pb-0">
-              {filteredProducts.map((product, idx) => {
+              {filteredProducts.map((product) => {
                 const inCart = cartItems.find(i => i.id === product.id);
                 return (
                   <div key={product.id} className="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden flex flex-col relative group hover:-translate-y-0.5 hover:shadow-md transition-all duration-200">
@@ -364,7 +364,7 @@ export default function Browse({ categories, activeCategory, onSetCategory, onAd
                       {/* Desktop Quick Add Hover Overlay */}
                       <div className="absolute inset-0 bg-surface/40 backdrop-blur-sm opacity-0 md:group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <button 
-                          onClick={() => onAdd(product)}
+                          onClick={() => onAdd(product as unknown as Product)}
                           className="bg-primary text-on-primary font-body-lg text-body-lg px-6 py-2 rounded-lg font-medium shadow-sm hover:bg-surface-tint transition-colors"
                         >
                           {inCart ? 'Add More' : 'Quick Add'}
@@ -385,7 +385,7 @@ export default function Browse({ categories, activeCategory, onSetCategory, onAd
                             </div>
                           ) : (
                             <button 
-                              onClick={() => onAdd(product)}
+                              onClick={() => onAdd(product as unknown as Product)}
                               className="bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center shadow-sm active:scale-95 transition-transform"
                             >
                               <span className="material-symbols-outlined text-[18px]">add</span>

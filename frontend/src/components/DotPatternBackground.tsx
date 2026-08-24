@@ -16,7 +16,7 @@ export default function DotPatternBackground() {
   // Interaction variables
   const mouse = useRef({ x: -1000, y: -1000, active: false });
   const dots = useRef<Dot[]>([]);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | null>(null);
 
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 

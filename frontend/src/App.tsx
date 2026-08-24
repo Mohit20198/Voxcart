@@ -447,16 +447,9 @@ export default function App() {
           />
         ) : activeTab === 'browse' ? (
           <Browse
-            products={MOCK_PRODUCTS}
             categories={REAL_CATEGORIES}
             activeCategory={activeCategory}
             onSetCategory={cat => setActiveCategory(cat)}
-            onVoiceCommand={(text) => {
-              setIsVoxOpen(true);
-              setTimeout(() => {
-                voxPanelRef.current?.sendCommand(text);
-              }, 100);
-            }}
             onAdd={product => handleAddToList(product.name, 1, '')}
             cartItems={listItems}
           />
@@ -465,11 +458,11 @@ export default function App() {
             cartItems={listItems as any}
             onUpdateQuantity={(id: string, qty: number) => {
               const item = listItems.find(i => i.id === id);
-              if (item) handleUpdateQuantity(id, item.name, qty - (item.quantity || 1));
+              if (item) handleUpdateQuantity(id, item.itemName || '', qty - (item.quantity || 1));
             }}
             onRemove={(id: string) => {
               const item = listItems.find(i => i.id === id);
-              if (item) handleRemoveItem(id, item.name);
+              if (item) handleRemoveItem(id, item.itemName || '');
             }}
             onBack={() => setActiveTab('home')}
             onPlaceOrder={() => {
@@ -481,14 +474,10 @@ export default function App() {
                 date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
                 totalItems,
                 totalPrice,
-                items: listItems.map(i => ({ name: i.name ?? i.itemName ?? '', price: i.price ?? 0, quantity: i.quantity }))
+                items: listItems.map(i => ({ name: (i as any).name ?? i.itemName ?? '', price: i.price ?? 0, quantity: i.quantity }))
               };
               setOrderHistory(prev => [newOrder, ...prev]);
               setActiveTab('orderConfirmation');
-            }}
-            onVoiceCommand={(text) => {
-              setIsVoxOpen(true);
-              setTimeout(() => { voxPanelRef.current?.sendCommand(text); }, 100);
             }}
           />
         ) : activeTab === 'detail' && selectedProduct ? (

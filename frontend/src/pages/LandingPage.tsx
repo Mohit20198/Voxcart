@@ -21,7 +21,7 @@ const BROC_IMG  = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDZETrng5r
 /* ════════════════════════════════════════════════════════
    LANDING PAGE COMPONENT
 ════════════════════════════════════════════════════════ */
-type CardPhase = 'floating' | 'traveling' | 'hidden' | 'appearing';
+
 const CARDS_DATA = [
   { id: 0, img: MILK_IMG, title: 'Organic Whole Milk', price: '₹49.90', startX: -180, startY: -150, delay: 0 },
   { id: 1, img: BREAD_IMG, title: 'Artisan Sourdough', price: '₹120.00', startX: 0, startY: -220, delay: 2000 },
@@ -29,7 +29,7 @@ const CARDS_DATA = [
 ];
 
 export default function LandingPage({ onGetStarted }: LandingPageProps) {
-  const [threeReady, setThreeReady] = useState(false);
+  // removed threeReady
   const [count, setCount] = useState(0);
   const [bounce, setBounce] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -196,7 +196,7 @@ export default function LandingPage({ onGetStarted }: LandingPageProps) {
         cleanupSteps = () => { steps.cleanup(); window.removeEventListener('stepsReveal', onReveal); };
       }
 
-      setThreeReady(true);
+      // setThreeReady(true);
     });
 
     return () => {
