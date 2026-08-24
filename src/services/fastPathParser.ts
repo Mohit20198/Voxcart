@@ -5,6 +5,24 @@ export interface ParsedCommand {
   unit?: string;
 }
 
+// Strip common conversational suffixes from item names
+const STRIP_SUFFIXES = [
+  ' in cart', ' to cart', ' to my cart', ' to the cart',
+  ' in list', ' to list', ' to my list', ' to the list',
+  ' in my cart', ' in the cart', ' in my list', ' in the shopping list',
+  ' to shopping list', ' to my shopping list',
+];
+
+function sanitizeItemName(name: string): string {
+  let cleaned = name.trim().toLowerCase();
+  for (const suffix of STRIP_SUFFIXES) {
+    if (cleaned.endsWith(suffix)) {
+      cleaned = cleaned.slice(0, cleaned.length - suffix.length).trim();
+    }
+  }
+  return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+}
+
 export const parseCommand = (transcript: string): ParsedCommand | null => {
   const normalized = transcript.toLowerCase().trim();
 
@@ -19,13 +37,11 @@ export const parseCommand = (transcript: string): ParsedCommand | null => {
   const addMatch = normalized.match(addRegex);
   
   if (addMatch) {
-    // If it ends with " off the list", it's actually a remove command (e.g. "take milk off the list" vs "add milk")
-    // but "take" isn't in this regex.
     return {
       action: "add",
       quantity: addMatch[1] ? parseInt(addMatch[1], 10) : 1,
       unit: addMatch[2] ? addMatch[2].replace(' of', '').trim() : undefined,
-      itemName: addMatch[3].trim()
+      itemName: sanitizeItemName(addMatch[3].trim())
     };
   }
 
