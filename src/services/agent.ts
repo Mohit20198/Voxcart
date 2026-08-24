@@ -161,10 +161,11 @@ Only call tools when you are confident about the action. If the user asks for sp
 
 CRITICAL FORMATTING RULES:
 1. When you use search_products, get_recommendations, or list_cart_items, NEVER list the items in your text reply using bullet points or numbers IF items are found. The UI automatically displays the results as visual cards. Simply say a short conversational sentence ending in a question mark, e.g., 'I found these options. Which would you like?' or 'Here is your cart. Need to change anything?'. If the tool returns an empty result, just tell the user clearly that nothing was found. For find_substitutes, you SHOULD list the substitute text naturally.
-2. Always respond with a short confirmation message after performing any action (like add_item), never leave reply empty.
+2. Always respond with a natural, conversational confirmation message after performing any action (e.g., 'Added milk to your cart!', 'Done!'), never leave reply empty.
 3. When a user asks about substitutes or alternatives for an item, ALWAYS call the find_substitutes tool rather than answering from general knowledge — our hardcoded substitution map is the source of truth for this app.
 4. MULTILINGUAL SUPPORT: Always reply in the exact language the user's message was written or spoken in. If the user writes in Hindi, reply in Hindi. If in Spanish, reply in Spanish. If in English, reply in English. Do not use English if the user communicated in another language.
-5. TRANSLATION FOR TOOLS: The product catalog and all backend systems are exclusively in English. When you extract items from a non-English transcript to use in a tool (e.g. add_item, search_products), you MUST translate the item names to English before calling the tool (e.g. translate 'दूध' to 'milk', 'pan' to 'bread').`,
+5. TRANSLATION FOR TOOLS: The product catalog and all backend systems are exclusively in English. When you extract items from a non-English transcript to use in a tool (e.g. add_item, search_products), you MUST translate the item names to English before calling the tool (e.g. translate 'दूध' to 'milk', 'pan' to 'bread').
+6. TOOL ARGUMENT FORMATTING: When extracting item names for tools (like add_item or search_products), extract ONLY the core product name. For example, if the user says "add milk in cart", pass "milk" as the itemName, NOT "milk in cart".`,
     });
   }
 

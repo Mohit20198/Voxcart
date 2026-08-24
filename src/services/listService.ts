@@ -26,7 +26,18 @@ export const addListItem = async (item: Omit<ShoppingListItem, 'id' | 'status' |
   const productsSnapshot = await db.collection('products').get();
   const cachedProducts = productsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as any));
   
-  const matchedProduct = cachedProducts.find(p => p.name.toLowerCase().includes(normalizedName));
+  let matchedProduct = cachedProducts.find(p => p.name.toLowerCase().includes(normalizedName));
+  
+  if (!matchedProduct) {
+    // Fallback: If user said something like "milk", check if "milk" is anywhere in the product name
+    const tokens = normalizedName.split(' ').filter(t => t.length > 2);
+    if (tokens.length > 0) {
+      matchedProduct = cachedProducts.find(p => {
+        const lowerName = p.name.toLowerCase();
+        return tokens.some(token => lowerName.includes(token));
+      });
+    }
+  }
 
   if (matchedProduct) {
     price = matchedProduct.price ?? null;
