@@ -371,35 +371,10 @@ export default function Home({ listItems, onUpdateQuantity, onRemove, onGoToMark
                   </div>
                 ))}
               </div>
-            </div>
-
-            {/* Right Column */}
-            <div className="flex flex-col gap-6">
-
-              {/* Household widget in populated state */}
-              <HouseholdPanel />
-
-              {/* List Summary */}
-              {listItems.length > 0 && (
-                <div className="glass-card rounded-xl p-6 flex flex-col gap-4 shadow-sm entrance-motion" style={{ animationDelay: '0.2s' }}>
-                  <h3 className="font-headline-sm text-headline-sm text-on-background">List Summary</h3>
-                  <div className="flex justify-between items-center py-2 border-b border-surface-variant">
-                    <span className="font-body-md text-body-md text-on-surface-variant">Total Items</span>
-                    <span className="font-label-bold text-label-bold">{totalItems}</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2">
-                    <span className="font-body-lg text-body-lg font-bold">Estimated Total</span>
-                    <span className="font-price-lg text-price-lg text-primary">{formatPrice(totalPrice)}</span>
-                  </div>
-                  <button onClick={onGoToCart} className="w-full py-3 bg-primary text-on-primary font-label-bold text-label-bold rounded-lg soft-glow hover:scale-[1.02] active:scale-[0.98] transition-all mt-1">
-                    Proceed to Checkout
-                  </button>
-                </div>
-              )}
 
               {/* Suggested Additions */}
               {recommendations.length > 0 && (
-                <div className="glass-card rounded-xl p-5 flex flex-col gap-3 shadow-sm relative overflow-hidden entrance-motion" style={{ animationDelay: '0.3s' }}>
+                <div className="glass-card rounded-xl p-5 flex flex-col gap-3 shadow-sm relative overflow-hidden entrance-motion mt-6" style={{ animationDelay: '0.3s' }}>
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none" />
                   <h3 className="font-headline-sm text-headline-sm text-on-background relative z-10">You might need</h3>
                   <div className="flex flex-col gap-2 relative z-10">
@@ -429,6 +404,33 @@ export default function Home({ listItems, onUpdateQuantity, onRemove, onGoToMark
                   </div>
                 </div>
               )}
+            </div>
+
+            {/* Right Column */}
+            <div className="flex flex-col gap-6">
+
+              {/* Household widget in populated state */}
+              <HouseholdPanel />
+
+              {/* List Summary */}
+              {listItems.length > 0 && (
+                <div className="glass-card rounded-xl p-6 flex flex-col gap-4 shadow-sm entrance-motion" style={{ animationDelay: '0.2s' }}>
+                  <h3 className="font-headline-sm text-headline-sm text-on-background">List Summary</h3>
+                  <div className="flex justify-between items-center py-2 border-b border-surface-variant">
+                    <span className="font-body-md text-body-md text-on-surface-variant">Total Items</span>
+                    <span className="font-label-bold text-label-bold">{totalItems}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2">
+                    <span className="font-body-lg text-body-lg font-bold">Estimated Total</span>
+                    <span className="font-price-lg text-price-lg text-primary">{formatPrice(totalPrice)}</span>
+                  </div>
+                  <button onClick={onGoToCart} className="w-full py-3 bg-primary text-on-primary font-label-bold text-label-bold rounded-lg soft-glow hover:scale-[1.02] active:scale-[0.98] transition-all mt-1">
+                    Proceed to Checkout
+                  </button>
+                </div>
+              )}
+
+
 
             </div>
           </div>
