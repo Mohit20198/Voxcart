@@ -34,7 +34,8 @@ export const addListItem = async (item: Omit<ShoppingListItem, 'id' | 'status' |
     if (tokens.length > 0) {
       matchedProduct = cachedProducts.find(p => {
         const lowerName = p.name.toLowerCase();
-        return tokens.some(token => lowerName.includes(token));
+        // Require ALL valid tokens to be present in the product name
+        return tokens.every(token => lowerName.includes(token));
       });
     }
   }
@@ -43,6 +44,10 @@ export const addListItem = async (item: Omit<ShoppingListItem, 'id' | 'status' |
     price = matchedProduct.price ?? null;
     imageUrl = matchedProduct.imageUrl ?? null;
     productId = matchedProduct.id;
+    // Auto-correct the item name to the canonical catalog name
+    item.itemName = matchedProduct.name;
+  } else {
+    throw new Error(`Item "${item.itemName}" is not available in the marketplace catalog. Cannot add.`);
   }
 
   const newItem: any = {
