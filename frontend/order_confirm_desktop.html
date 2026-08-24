@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VoxCart - Order Confirmation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#e2e2e5",
+                        "tertiary-fixed-dim": "#ffb2ba",
+                        "tertiary": "#ad2e48",
+                        "on-tertiary-fixed": "#400010",
+                        "on-background": "#151c22",
+                        "surface": "#f6faff",
+                        "tertiary-fixed": "#ffd9dc",
+                        "surface-variant": "#dce3eb",
+                        "on-secondary-fixed-variant": "#454749",
+                        "surface-container": "#e8eff7",
+                        "outline-variant": "#bccaba",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#006d34",
+                        "primary-fixed": "#70fd9a",
+                        "primary-fixed-dim": "#51e081",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#dce3eb",
+                        "on-surface-variant": "#3d4a3e",
+                        "inverse-primary": "#51e081",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#003b19",
+                        "on-tertiary-fixed-variant": "#8c1332",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#1a1c1e",
+                        "primary": "#006d34",
+                        "primary-container": "#00b259",
+                        "on-primary-fixed-variant": "#005226",
+                        "surface-bright": "#f6faff",
+                        "secondary-container": "#e2e2e5",
+                        "surface-container-high": "#e2e9f1",
+                        "secondary": "#5d5e61",
+                        "tertiary-container": "#fc6a81",
+                        "outline": "#6d7b6d",
+                        "on-secondary-container": "#636467",
+                        "on-error": "#ffffff",
+                        "on-surface": "#151c22",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#ebf1f9",
+                        "inverse-surface": "#2a3137",
+                        "surface-container-low": "#eef4fc",
+                        "background": "#f6faff",
+                        "on-tertiary-container": "#6b0021",
+                        "on-primary-fixed": "#00210b",
+                        "secondary-fixed-dim": "#c6c6c9",
+                        "surface-dim": "#d4dbe3",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-xs": "4px",
+                        "container-margin": "12px",
+                        "section-gap": "24px",
+                        "stack-sm": "8px",
+                        "stack-md": "12px",
+                        "gutter-grid": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "price-sm": ["Inter"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "price-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display": ["Plus Jakarta Sans"],
+                        "label-bold": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "22px", "fontWeight": "500" }],
+                        "price-sm": ["13px", { "lineHeight": "13px", "fontWeight": "600" }],
+                        "headline-sm": ["16px", { "lineHeight": "20px", "fontWeight": "700" }],
+                        "price-md": ["16px", { "lineHeight": "16px", "fontWeight": "700" }],
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "headline-md": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-bold": ["12px", { "lineHeight": "14px", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .lift-glow {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .lift-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 109, 52, 0.2);
+        }
+        
+        .animate-fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        .animate-bounce-in {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body class="h-full w-full relative overflow-hidden font-body-md text-on-surface bg-background">
+<!-- Background Animation -->
+<!-- STITCH_SHADER_START:ANIMATION_76 class="absolute inset-0 w-full h-full z-0 opacity-40" -->
+<div class="absolute inset-0 w-full h-full z-0 opacity-40" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_76" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_76');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+
+// Interactive Dot Pattern Shader
+// Replaces the gradient mesh with a grid of dots that repel from the cursor
+// Brand Color: #00b259 (Primary Green)
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 mouse = u_mouse / u_resolution;
+    
+    // Adjust aspect ratio for uniform dots
+    float aspect = u_resolution.x / u_resolution.y;
+    vec2 gridUv = uv;
+    gridUv.x *= aspect;
+    vec2 gridMouse = mouse;
+    gridMouse.x *= aspect;
+    
+    // Grid density
+    float density = 40.0;
+    vec2 id = floor(gridUv * density);
+    vec2 fv = fract(gridUv * density) - 0.5;
+    
+    // Calculate distance to mouse for repulsion
+    vec2 cellCenter = (id + 0.5) / density;
+    float dist = distance(cellCenter, gridMouse);
+    
+    // Repulsion effect
+    float repelDist = 0.15;
+    float repelForce = smoothstep(repelDist, 0.0, dist) * 0.4;
+    vec2 offset = normalize(cellCenter - gridMouse) * repelForce;
+    
+    // Re-calculate local coordinates with offset
+    vec2 p = fv - offset * density;
+    
+    // Dot drawing
+    float radius = 0.12;
+    // Pulse dots slightly over time
+    radius += sin(u_time * 2.0 + id.x * 0.5 + id.y * 0.3) * 0.02;
+    
+    float mask = smoothstep(radius, radius - 0.05, length(p));
+    
+    // Colors
+    vec3 dotColor = vec3(0.0, 0.698, 0.349); // #00b259
+    vec3 bgColor = vec3(0.96, 0.98, 1.0);  // Soft surface color
+    
+    // Fade dots out at the edges for a cleaner look
+    float edgeMask = smoothstep(0.0, 0.2, uv.x) * smoothstep(1.0, 0.8, uv.x) *
+                     smoothstep(0.0, 0.2, uv.y) * smoothstep(1.0, 0.8, uv.y);
+    
+    vec3 finalColor = mix(bgColor, dotColor, mask * edgeMask * 0.3);
+    
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_76 -->
+<!-- Top App Bar (Minimal) -->
+<header class="relative z-10 w-full bg-transparent p-container-margin md:px-section-gap flex justify-center md:justify-start items-center">
+<div class="font-display text-display text-primary font-extrabold tracking-tight">
+            VoxCart
+        </div>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative z-10 w-full h-[calc(100vh-80px)] flex items-center justify-center px-container-margin">
+<!-- Glassmorphism Card -->
+<div class="bg-surface-container-lowest/80 backdrop-blur-xl border border-surface-variant rounded-xl p-section-gap max-w-md w-full flex flex-col items-center text-center animate-fade-up">
+<!-- Success Icon -->
+<div class="w-20 h-20 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center mb-section-gap animate-bounce-in delay-100">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- Headlines -->
+<h1 class="font-display text-display text-on-surface mb-stack-xs animate-fade-up delay-200">
+                Order placed!
+            </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mb-section-gap animate-fade-up delay-300">
+                Your list has been saved to your order history.
+            </p>
+<!-- Summary -->
+<div class="w-full bg-surface-container rounded-lg p-stack-md flex justify-between items-center mb-stack-sm animate-fade-up delay-400 border border-surface-variant">
+<span class="font-body-lg text-body-lg text-on-surface">3 items</span>
+<span class="font-price-md text-price-md text-on-surface">Total: $9.56</span>
+</div>
+<!-- Order ID -->
+<div class="font-body-sm text-body-sm text-secondary mb-section-gap animate-fade-up delay-400">
+                Order #VC-10234
+            </div>
+<!-- Actions -->
+<button class="w-full bg-primary text-on-primary font-label-bold text-label-bold py-3 px-6 rounded-lg lift-glow mb-stack-md animate-fade-up delay-500 uppercase tracking-wider">
+                Back to shopping
+            </button>
+<a class="font-body-sm text-body-sm text-primary hover:text-primary-fixed-dim transition-colors animate-fade-up delay-500" href="#">
+                View order history
+            </a>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>VoxCart - Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f6faff",
+                        "background": "#f6faff",
+                        "on-secondary-container": "#636467",
+                        "primary": "#006d34",
+                        "on-tertiary-fixed-variant": "#8c1332",
+                        "surface-container-highest": "#dce3eb",
+                        "on-surface-variant": "#3d4a3e",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#d4dbe3",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#51e081",
+                        "inverse-surface": "#2a3137",
+                        "outline": "#6d7b6d",
+                        "on-primary-container": "#003b19",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#fc6a81",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb2ba",
+                        "on-tertiary-fixed": "#400010",
+                        "tertiary-fixed": "#ffd9dc",
+                        "secondary": "#5d5e61",
+                        "on-primary-fixed": "#00210b",
+                        "surface-container-low": "#eef4fc",
+                        "secondary-fixed": "#e2e2e5",
+                        "primary-fixed": "#70fd9a",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#6b0021",
+                        "surface-tint": "#006d34",
+                        "outline-variant": "#bccaba",
+                        "tertiary": "#ad2e48",
+                        "on-error": "#ffffff",
+                        "surface": "#f6faff",
+                        "surface-variant": "#dce3eb",
+                        "primary-container": "#00b259",
+                        "on-background": "#151c22",
+                        "on-surface": "#151c22",
+                        "on-secondary-fixed": "#1a1c1e",
+                        "secondary-container": "#e2e2e5",
+                        "secondary-fixed-dim": "#c6c6c9",
+                        "inverse-on-surface": "#ebf1f9",
+                        "surface-container": "#e8eff7",
+                        "primary-fixed-dim": "#51e081",
+                        "surface-container-high": "#e2e9f1",
+                        "on-primary-fixed-variant": "#005226",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#454749"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "12px",
+                        "stack-xs": "4px",
+                        "gutter-grid": "8px",
+                        "stack-sm": "8px",
+                        "container-margin": "12px",
+                        "section-gap": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "price-md": ["Inter"],
+                        "label-bold": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "price-sm": ["Inter"],
+                        "display": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "price-md": ["16px", { "lineHeight": "16px", "fontWeight": "700" }],
+                        "label-bold": ["12px", { "lineHeight": "14px", "fontWeight": "700" }],
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "price-sm": ["13px", { "lineHeight": "13px", "fontWeight": "600" }],
+                        "display": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "22px", "fontWeight": "500" }],
+                        "headline-sm": ["16px", { "lineHeight": "20px", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .tab-active {
+            border-bottom-width: 2px;
+            border-color: #006d34;
+            color: #006d34;
+        }
+        .tab-inactive {
+            color: #636467;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md pt-14 pb-16 antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-margin h-14 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant/30 text-primary dark:text-inverse-primary transition-colors duration-200">
+<button aria-label="menu" class="text-on-surface-variant dark:text-on-secondary-container hover:bg-primary-container/20 p-2 rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-headline-md font-headline-md text-primary dark:text-inverse-primary">VoxCart</h1>
+<button aria-label="mic" class="text-on-surface-variant dark:text-on-secondary-container hover:bg-primary-container/20 p-2 rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-container-margin py-section-gap max-w-lg mx-auto">
+<!-- Profile Header -->
+<section class="flex items-center gap-4 mb-section-gap">
+<div class="w-16 h-16 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-headline-md text-headline-md shadow-sm border border-outline-variant/30">
+                JD
+            </div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Jane Doe</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">jane.doe@example.com</p>
+</div>
+</section>
+<!-- Tabs Navigation -->
+<nav aria-label="Profile Tabs" class="flex border-b border-outline-variant/30 mb-stack-md">
+<button class="flex-1 py-3 font-label-bold text-label-bold text-center tab-active focus:outline-none transition-colors" id="tab-orders" onclick="switchTab('orders')">
+                Order History
+            </button>
+<button class="flex-1 py-3 font-label-bold text-label-bold text-center tab-inactive focus:outline-none transition-colors" id="tab-prefs" onclick="switchTab('prefs')">
+                Preferences
+            </button>
+</nav>
+<!-- Orders View -->
+<div class="space-y-stack-md" id="view-orders">
+<!-- Order Card 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-sm">
+<div class="p-stack-md flex justify-between items-center cursor-pointer hover:bg-surface-container-low transition-colors" onclick="toggleOrderDetails('order1')">
+<div>
+<h3 class="font-label-bold text-label-bold text-on-surface">Order VC-10234</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-stack-xs">Oct 24, 2023 • 3 items</p>
+</div>
+<div class="flex items-center gap-stack-sm">
+<span class="font-price-md text-price-md text-primary">$12.50</span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-200" id="icon-order1">expand_more</span>
+</div>
+</div>
+<div class="hidden border-t border-outline-variant/30 bg-surface px-stack-md py-stack-sm space-y-stack-xs" id="details-order1">
+<div class="flex justify-between font-body-sm text-body-sm">
+<span class="">Organic Bananas (1 bunch)</span>
+<span class="">$3.50</span>
+</div>
+<div class="flex justify-between font-body-sm text-body-sm">
+<span class="">Almond Milk (1L)</span>
+<span class="">$4.00</span>
+</div>
+<div class="flex justify-between font-body-sm text-body-sm">
+<span class="">Sourdough Bread (1 loaf)</span>
+<span class="">$5.00</span>
+</div>
+</div>
+</article>
+<!-- Order Card 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl overflow-hidden shadow-sm">
+<div class="p-stack-md flex justify-between items-center cursor-pointer hover:bg-surface-container-low transition-colors" onclick="toggleOrderDetails('order2')">
+<div>
+<h3 class="font-label-bold text-label-bold text-on-surface">Order VC-09876</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-stack-xs">Oct 12, 2023 • 5 items</p>
+</div>
+<div class="flex items-center gap-stack-sm">
+<span class="font-price-md text-price-md text-primary">$34.20</span>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform duration-200" id="icon-order2">expand_more</span>
+</div>
+</div>
+<div class="hidden border-t border-outline-variant/30 bg-surface px-stack-md py-stack-sm space-y-stack-xs" id="details-order2">
+<div class="flex justify-between font-body-sm text-body-sm text-on-surface-variant italic">
+                        Details unavailable for older orders in this view.
+                    </div>
+</div>
+</article>
+</div>
+<!-- Preferences View -->
+<div class="hidden space-y-section-gap" id="view-prefs">
+<section>
+<h3 class="font-label-bold text-label-bold text-on-surface mb-stack-xs">Dietary Preferences</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-stack-sm">Select all that apply.</p>
+<div class="flex flex-wrap gap-gutter-grid">
+<button class="px-3 py-1 rounded-[4px] bg-surface-container-highest text-on-surface text-body-sm border border-transparent hover:border-outline-variant transition-colors" onclick="this.classList.toggle('bg-primary-container'); this.classList.toggle('text-on-primary-container'); this.classList.toggle('border-primary'); this.classList.toggle('bg-surface-container-highest');">Vegetarian</button>
+<button class="px-3 py-1 rounded-[4px] bg-primary-container text-on-primary-container text-body-sm border border-primary transition-colors" onclick="this.classList.toggle('bg-primary-container'); this.classList.toggle('text-on-primary-container'); this.classList.toggle('border-primary'); this.classList.toggle('bg-surface-container-highest');">Vegan</button>
+<button class="px-3 py-1 rounded-[4px] bg-surface-container-highest text-on-surface text-body-sm border border-transparent hover:border-outline-variant transition-colors" onclick="this.classList.toggle('bg-primary-container'); this.classList.toggle('text-on-primary-container'); this.classList.toggle('border-primary'); this.classList.toggle('bg-surface-container-highest');">Dairy-free</button>
+<button class="px-3 py-1 rounded-[4px] bg-surface-container-highest text-on-surface text-body-sm border border-transparent hover:border-outline-variant transition-colors" onclick="this.classList.toggle('bg-primary-container'); this.classList.toggle('text-on-primary-container'); this.classList.toggle('border-primary'); this.classList.toggle('bg-surface-container-highest');">Gluten-free</button>
+<button class="px-3 py-1 rounded-[4px] bg-surface-container-highest text-on-surface text-body-sm border border-transparent hover:border-outline-variant transition-colors" onclick="this.classList.toggle('bg-primary-container'); this.classList.toggle('text-on-primary-container'); this.classList.toggle('border-primary'); this.classList.toggle('bg-surface-container-highest');">No preference</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-stack-sm italic text-xs">This helps VoxCart suggest better substitutes when an item isn't available.</p>
+</section>
+<section>
+<label class="block font-label-bold text-label-bold text-on-surface mb-stack-xs" for="language-select">Language Preference</label>
+<div class="relative">
+<select class="block w-full rounded-lg border-outline-variant/50 bg-surface-container-lowest text-on-surface font-body-md py-2 pl-3 pr-10 focus:border-primary focus:ring-primary appearance-none" id="language-select">
+<option>English</option>
+<option>Hindi</option>
+<option>Spanish</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</section>
+<button class="w-full bg-primary text-on-primary rounded-lg py-3 font-label-bold text-label-bold hover:bg-primary/90 transition-colors">
+                Save preferences
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-2 py-2 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-t border-outline-variant/30 text-primary dark:text-inverse-primary md:hidden"><button class="flex flex-col items-center justify-center text-on-secondary-container hover:bg-surface-container-highest/50 scale-95 active:scale-90 transition-transform rounded-xl px-2 py-1">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-bold text-label-bold mt-1 text-[10px]">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container hover:bg-surface-container-highest/50 scale-95 active:scale-90 transition-transform rounded-xl px-2 py-1">
+<span class="material-symbols-outlined" data-icon="shopping_basket">shopping_basket</span>
+<span class="font-label-bold text-label-bold mt-1 text-[10px]">Grocery</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container hover:bg-surface-container-highest/50 scale-95 active:scale-90 transition-transform rounded-xl px-2 py-1">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-label-bold text-label-bold mt-1 text-[10px]">Cart</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container hover:bg-surface-container-highest/50 scale-95 active:scale-90 transition-transform rounded-xl px-2 py-1">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-bold text-label-bold mt-1 text-[10px]">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-secondary-container hover:bg-surface-container-highest/50 scale-95 active:scale-90 transition-transform rounded-xl px-2 py-1">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-bold text-label-bold mt-1 text-[10px]">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container/40 text-on-primary-container rounded-xl px-2 py-1 hover:bg-surface-container-highest/50 scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-bold text-label-bold mt-1 text-[10px]">Profile</span>
+</button></nav>
+<script>
+        function switchTab(tabId) {
+            const ordersTab = document.getElementById('tab-orders');
+            const prefsTab = document.getElementById('tab-prefs');
+            const ordersView = document.getElementById('view-orders');
+            const prefsView = document.getElementById('view-prefs');
+
+            if (tabId === 'orders') {
+                ordersTab.classList.add('tab-active');
+                ordersTab.classList.remove('tab-inactive');
+                prefsTab.classList.add('tab-inactive');
+                prefsTab.classList.remove('tab-active');
+                
+                ordersView.classList.remove('hidden');
+                prefsView.classList.add('hidden');
+            } else {
+                prefsTab.classList.add('tab-active');
+                prefsTab.classList.remove('tab-inactive');
+                ordersTab.classList.add('tab-inactive');
+                ordersTab.classList.remove('tab-active');
+                
+                prefsView.classList.remove('hidden');
+                ordersView.classList.add('hidden');
+            }
+        }
+
+        function toggleOrderDetails(orderId) {
+            const detailsDiv = document.getElementById(`details-${orderId}`);
+            const icon = document.getElementById(`icon-${orderId}`);
+            
+            if (detailsDiv.classList.contains('hidden')) {
+                detailsDiv.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                detailsDiv.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+
+
+</body></html>

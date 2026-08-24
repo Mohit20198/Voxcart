@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors from Stitch DESIGN.md */
+  --color-primary-fixed-dim: #51e081;
+  --color-primary-fixed: #70fd9a;
+  --color-secondary-fixed-dim: #c6c6c9;
+  --color-on-tertiary-container: #6b0021;
+  --color-on-tertiary-fixed-variant: #8c1332;
+  --color-secondary-container: #e2e2e5;
+  --color-surface-container: #e8eff7;
+  --color-on-primary-fixed: #00210b;
+  --color-surface-tint: #006d34;
+  --color-secondary-fixed: #e2e2e5;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-surface-variant: #3d4a3e;
+  --color-on-secondary: #ffffff;
+  --color-on-primary-container: #003b19;
+  --color-surface-dim: #d4dcd1;
+  --color-outline-variant: #bccaba;
+  --color-inverse-primary: #51e081;
+  --color-outline: #6d7b6d;
+  --color-on-primary-fixed-variant: #005226;
+  --color-tertiary: #ad2e48;
+  --color-tertiary-container: #fc6a81;
+  --color-inverse-surface: #2b322b;
+  --color-primary-container: #00b259;
+  --color-tertiary-fixed-dim: #ffb2ba;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-surface-container-highest: #dde5da;
+  --color-on-secondary-container: #636467;
+  --color-on-error-container: #93000a;
+  --color-surface-bright: #f4fcf0;
+  --color-on-surface: #161d17;
+  --color-on-secondary-fixed-variant: #454749;
+  --color-on-background: #161d17;
+  --color-on-secondary-fixed: #1a1c1e;
+  --color-surface-container-low: #eef6eb;
+  --color-primary: #006d34;
+  --color-on-tertiary-fixed: #400010;
+  --color-background: #f4fcf0;
+  --color-tertiary-fixed: #ffd9dc;
+  --color-on-primary: #ffffff;
+  --color-error: #ba1a1a;
+  --color-surface-container-high: #e2ebdf;
+  --color-surface-variant: #dde5da;
+  --color-secondary: #5d5e61;
+  --color-surface: #f4fcf0;
+  --color-on-tertiary: #ffffff;
+  --color-inverse-on-surface: #ebf3e8;
+  --color-glass-surface: rgba(255, 255, 255, 0.7);
+  --color-glass-outline: rgba(255, 255, 255, 0.4);
+
+  /* Typography */
+  --font-body-lg: "Inter", sans-serif;
+  --font-price-md: "Inter", sans-serif;
+  --font-headline-md: "Plus Jakarta Sans", sans-serif;
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-price-sm: "Inter", sans-serif;
+  --font-label-bold: "Inter", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+  --font-headline-sm: "Plus Jakarta Sans", sans-serif;
+  --font-body-sm: "Inter", sans-serif;
+
+  /* Spacing */
+  --spacing-stack-sm: 8px;
+  --spacing-section-gap: 24px;
+  --spacing-stack-xs: 4px;
+  --spacing-gutter-grid: 8px;
+  --spacing-stack-md: 12px;
+  --spacing-container-margin: 12px;
+}
+
+@layer base {
+  html {
+    overflow-x: hidden;
+  }
+  body {
+    @apply bg-background text-on-background antialiased;
+    overflow-x: hidden;
+    min-height: 100dvh;
+  }
+}
+
+/* Custom hide scrollbar utility */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar,
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar,
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .pulse-glow {
+    animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  }
+  @keyframes pulse-ring {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 178, 89, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 20px rgba(0, 178, 89, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 178, 89, 0);
+    }
+  }
+  
+  .glass-card {
+    background-color: var(--color-glass-surface);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--color-glass-outline);
+  }
+  
+  .soft-glow:hover {
+    box-shadow: 0 0 15px rgba(0, 109, 52, 0.3);
+  }
+  
+  .entrance-motion {
+    animation: slideUpFade 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  @keyframes slideUpFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+
+  @keyframes bounceIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+  }
+}
