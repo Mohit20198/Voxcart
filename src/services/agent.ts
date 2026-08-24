@@ -22,7 +22,7 @@ const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
       parameters: {
         type: 'object',
         properties: {
-          itemName: { type: 'string' },
+          itemName: { type: 'string', description: "The core name of the product to add, WITHOUT conversational words like 'in cart' (e.g. use 'milk', not 'milk in cart')." },
           quantity: { type: 'number' },
           unit: { type: 'string' },
         },
